@@ -1,0 +1,129 @@
+.footer {
+  background: linear-gradient(135deg, #0b1f2a, #122f3f);
+  color: #dcdcdc;
+  padding: 70px 20px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+}
+
+.footer-col h4 {
+  font-size: 18px;
+  margin-bottom: 18px;
+  color: #fff;
+  position: relative;
+}
+
+.footer-col h4::after {
+  content: "";
+  width: 40px;
+  height: 3px;
+  background: #e53935;
+  display: block;
+  margin-top: 6px;
+}
+
+.footer-logo {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 14px;
+  color: #fff;
+}
+
+.footer-logo span {
+  color: #e53935;
+}
+
+.footer-col p {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  color: #dcdcdc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #e53935;
+}
+
+/* SOCIAL ICONS */
+.footer-socials {
+  display: flex;
+  gap: 14px;
+}
+
+.footer-socials a {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+  background: #e53935;
+  transform: translateY(-4px);
+}
+
+/* BOTTOM */
+.footer-bottom {
+  width: 100vw;                 
+  margin-left: calc(-50vw + 50%);
+  text-align: center;
+  margin-top: 50px;
+  padding: 18px;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* SCROLL TO TOP */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #e53935;
+  color: #fff;
+  border: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.scroll-top-btn:hover {
+  background: #c62828;
+  transform: translateY(-5px);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .footer {
+    padding-top: 50px;
+  }
+}
