@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from "react";
 import PageBanner from "../components/PageBanner";
 import blogBanner from "../assets/banners/about.jpg";
-import API from "../services/api";
+
+const API_URL = "https://radhika-steel-1.onrender.com";
 
 function Blog() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    API.get("/blogs")
-      .then((res) => {
-        setBlogs(res.data);
+    fetch(`${API_URL}/api/blogs`)
+      .then((res) => res.json())
+      .then((data) => {
+        setBlogs(data);
         setLoading(false);
       })
-      .catch((err) => {
-        console.error("Error fetching blogs:", err);
-        setLoading(false);
-      });
+      .catch(() => setLoading(false));
   }, []);
 
   return (

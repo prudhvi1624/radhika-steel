@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from "react";
 import PageBanner from "../components/PageBanner";
 import productsBanner from "../assets/banners/about-main.jpg";
-import API from "../services/api";
+
+const API_URL = "https://radhika-steel-1.onrender.com";
 
 function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    API.get("/products")
-      .then((res) => {
-        setProducts(res.data);
+    fetch(`${API_URL}/api/products`)
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
         setLoading(false);
       })
-      .catch((err) => {
-        console.error("Error fetching products:", err);
-        setLoading(false);
-      });
+      .catch(() => setLoading(false));
   }, []);
 
   return (
