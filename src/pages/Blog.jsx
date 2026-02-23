@@ -27,22 +27,33 @@ function Blog() {
         subtitle="Insights, updates, and knowledge from the steel industry"
       />
 
-      <main style={{ minHeight: "100vh", padding: "60px 20px" }}>
-        <h1 style={{ textAlign: "center" }}>Latest Blogs</h1>
+      <main className="blog-page">
+        <h1 className="section-title">
+          Latest Blogs
+          <span className="title-underline"></span>
+        </h1>
 
         {loading ? (
-          <p style={{ textAlign: "center" }}>Loading blogs...</p>
+          <p className="loading-text">Loading blogs...</p>
         ) : (
           <div className="blog-grid">
             {blogs.map((blog) => (
               <div key={blog._id} className="blog-card">
-                <img
-                  src={`https://radhika-steel-1.onrender.com${blog.image}`}
-                  alt={blog.title}
-                  className="blog-img"
-                />
-                <h3>{blog.title}</h3>
-                <p>{blog.desc}</p>
+                <div className="blog-image-wrapper">
+                  <img
+                    src={`${API_URL}${blog.image}`}
+                    alt={blog.title}
+                    className="blog-img"
+                  />
+
+                  {/* 🔥 Hover overlay (if your CSS supports it) */}
+                  <div className="blog-overlay">
+                    <p className="blog-overlay-text">{blog.description}</p>
+                  </div>
+                </div>
+
+                <h3 className="blog-title">{blog.title}</h3>
+                <p className="blog-meta">Posted on {new Date(blog.createdAt).toLocaleDateString()}</p>
               </div>
             ))}
           </div>

@@ -28,21 +28,37 @@ function Products() {
       />
 
       <main className="products-page">
-        <h1 className="products-heading">Our Products</h1>
+        <h1 className="products-heading">
+          Our Products
+          <span className="title-underline"></span>
+        </h1>
 
         {loading ? (
-          <p style={{ textAlign: "center" }}>Loading products...</p>
+          <p className="loading-text">Loading products...</p>
         ) : (
           <div className="product-grid">
             {products.map((product) => (
               <div key={product._id} className="product-card">
-                <img
-                  src={`https://radhika-steel-1.onrender.com${product.image}`}
-                  alt={product.name}
-                  className="product-img"
-                />
-                <h3>{product.name}</h3>
-                <p>{product.description}</p>
+                <div className="product-img-wrapper">
+                  <img
+                    src={`${API_URL}${product.image}`}
+                    alt={product.name}
+                    className="product-img"
+                  />
+
+                  {/* 🔥 Hover Overlay */}
+                  <div className="product-overlay">
+                    <span className="view-badge">View Details</span>
+                    <p className="product-description">
+                      {product.description}
+                    </p>
+                  </div>
+                </div>
+
+                <h3 className="product-title">{product.name}</h3>
+                <p className="product-subtitle">
+                  High quality mild steel product.
+                </p>
               </div>
             ))}
           </div>
