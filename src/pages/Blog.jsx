@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
 import PageBanner from "../components/PageBanner";
 import blogBanner from "../assets/banners/about.jpg";
-
-const API_URL = "http://localhost:5000";
+import API from "../services/api";
 
 function Blog() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${API_URL}/api/blogs`)
-      .then((res) => res.json())
-      .then((data) => {
-        setBlogs(data);
+    API.get("/blogs")
+      .then((res) => {
+        setBlogs(res.data);
         setLoading(false);
       })
       .catch((err) => {
@@ -30,10 +28,7 @@ function Blog() {
       />
 
       <main style={{ minHeight: "100vh", padding: "60px 20px" }}>
-        <h1 className="section-title" style={{ textAlign: "center" }}>
-          Latest Blogs
-          <span className="title-underline"></span>
-        </h1>
+        <h1 style={{ textAlign: "center" }}>Latest Blogs</h1>
 
         {loading ? (
           <p style={{ textAlign: "center" }}>Loading blogs...</p>
@@ -41,16 +36,13 @@ function Blog() {
           <div className="blog-grid">
             {blogs.map((blog) => (
               <div key={blog._id} className="blog-card">
-                <div className="blog-image-wrapper">
-                  <img
-                    src={`${API_URL}${blog.image}`}
-                    alt={blog.title}
-                    className="blog-img"
-                  />
-                </div>
-
+                <img
+                  src={`https://radhika-steel-1.onrender.com${blog.image}`}
+                  alt={blog.title}
+                  className="blog-img"
+                />
                 <h3>{blog.title}</h3>
-                <p>{blog.description}</p>
+                <p>{blog.desc}</p>
               </div>
             ))}
           </div>
